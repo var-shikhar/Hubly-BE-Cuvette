@@ -1,3 +1,27 @@
+/*
+|--------------------------------------------------------------------------
+| User Authentication and Management Controllers
+|--------------------------------------------------------------------------
+|
+| This file contains controllers for handling user authentication, profile management,
+| and user actions like login, registration, and updates. The controllers include:
+|
+| - `postLogin`: Authenticates the user, validates credentials, and issues JWT tokens.
+| - `postRegister`: Handles user registration with validation and password hashing.
+| - `getLogout`: Logs out the user by clearing authentication cookies and refresh token.
+| - `getMemberList`: Retrieves a list of all users in the system.
+| - `getMemberDetail`: Fetches details of a specific user.
+| - `postMember`: Creates a new user and assigns them a role based on existing Admin.
+| - `putMemberDetail`: Updates user profile information and changes the password if necessary.
+| - `deleteMember`: Deletes a user, with checks to ensure only authorized actions.
+|
+| All controllers validate input and handle errors with the `CustomError` class.
+| Responses include status codes based on the result of the operation, using `RouteCode`.
+| 
+| Authentication is done via JWT tokens, and bcrypt is used for hashing passwords securely.
+|
+*/
+
 import bcrypt from "bcryptjs";
 import { configDotenv } from "dotenv";
 import { CustomError } from "../middleware/errorMiddleware.js";

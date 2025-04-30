@@ -1,3 +1,34 @@
+/*
+|---------------------------------------------------------------------------
+| Ticket Management and Lead Assignment Controllers
+|---------------------------------------------------------------------------
+|
+| This file contains controllers for managing lead tickets, including retrieval,
+| assignment, and status updates. The controllers provide functionality for:
+|
+| - `getTicketList`: Retrieves a paginated list of tickets with optional status filter.
+| - `getLeadList`: Fetches the list of leads assigned to the current user or all leads for Admin.
+| - `getAssigneeList`: Returns a list of users who can be assigned to a lead.
+| - `getLeadDetails`: Provides detailed information about a specific lead and its associated conversations.
+| - `putStatusUpdate`: Allows the current assignee to update the status of a lead.
+|
+| The controllers ensure that appropriate permissions are checked before actions are executed, 
+| with validation on input parameters.
+|
+| The system makes use of Mongoose for querying the database and populating associated data 
+| (e.g., assignees and conversations). It also handles errors and responds with the appropriate
+| status codes using `RouteCode` and custom error handling via `CustomError`.
+|
+| All functions support pagination, sorting, and ensure data consistency by checking 
+| for lead existence and assignee details.
+|
+| Data fetched includes lead conversations and related assignee information.
+| 
+| Error handling is performed using the `next` middleware to propagate errors 
+| to the global error handler.
+*/
+
+
 import { CustomError } from "../middleware/errorMiddleware.js";
 import ChatbotSettings from "../modal/chat-bot-modal.js";
 import LeadConversation from "../modal/lead-conversation-modal.js";

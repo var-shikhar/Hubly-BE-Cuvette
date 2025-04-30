@@ -1,3 +1,21 @@
+/*
+|--------------------------------------------------------------------------
+| Custom Error Class & Error Middleware
+|--------------------------------------------------------------------------
+|
+| This file defines a custom error class (`CustomError`) for consistent error handling,
+| and an `errorMiddleware` to log and respond to errors in a centralized way.
+|
+| - `CustomError`: Extends the native `Error` class to include a `statusCode` property.
+| - `errorMiddleware`: Catches errors, logs them using Winston (to both console and file),
+|   and responds with the error message and status code.
+| - Logs are stored in the `logs` directory (created if not present), with different log files
+|   for general logs, errors, and daily logs.
+|
+| Winston is used for logging, ensuring structured and persistent error tracking.
+|
+*/
+
 import fs from 'fs';
 import path from 'path';
 import winston from 'winston';

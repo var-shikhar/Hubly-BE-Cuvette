@@ -1,3 +1,19 @@
+/*
+|--------------------------------------------------------------------------
+| Authentication Middleware
+|--------------------------------------------------------------------------
+|
+| This middleware ensures that users are authenticated before accessing 
+| protected routes. It checks for the presence of an `accessToken` or `refreshToken` in cookies, validates them, and attaches user info to
+| `req.user`. If no token is found or the token is invalid/expired, a 440  error is returned. (440 will automatically send a logout request (we've setup))
+
+| - Access tokens are short-lived for secure, frequent API access.
+| - Refresh tokens are used to obtain new access tokens without re-login.
+| - Tokens are stored in HttpOnly cookies for security, with the `path`
+|   attribute ensuring proper scope and minimizing exposure.
+*/
+
+
 import { configDotenv } from "dotenv";
 import jwt from "jsonwebtoken";
 import User from "../modal/user-modal.js";

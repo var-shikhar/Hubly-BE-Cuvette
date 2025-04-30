@@ -1,3 +1,31 @@
+/*
+|---------------------------------------------------------------------------
+| Lead Management and Analytics Controllers
+|---------------------------------------------------------------------------
+|
+| This file contains controllers for managing leads, including their creation,  updates, and associated conversations. Additionally, it provides analytics 
+| for lead performance and status tracking. The key controllers include:
+|
+| - `getLeadsDetails`: Retrieves detailed information about a specific lead, 
+|   including the lead's conversation history.
+| - `postNewLead`: Creates a new lead, generates a unique ticket ID, assigns 
+|   it to an Admin, and initiates the first conversation for the lead.
+| - `postLeadForm`: Updates the personal details (name, email, phone) for a 
+|   specific lead and marks the lead as having shared details.
+| - `putLeadMessage`: Adds a new message to a lead's conversation, sent by the lead itself.
+| - `getLeadsAnalytics`: Provides analytics on the leads, including total lead counts, resolution rates, average response times, and weekly missed chat data.
+|
+| The `getTicketID` function generates unique ticket IDs based on the current date and ensures that no duplicate ticket IDs are assigned.
+|
+| Analytics include:
+| - Total lead count
+| - Resolved lead count and percentage
+| - Average response time for leads
+| - Weekly graph of missed chats (last 10 weeks)
+|
+*/
+
+
 import { CustomError } from "../middleware/errorMiddleware.js";
 import LeadConversation from "../modal/lead-conversation-modal.js";
 import Lead from "../modal/lead-modal.js";

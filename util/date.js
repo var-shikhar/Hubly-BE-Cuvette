@@ -1,3 +1,4 @@
+// Converts date and time to a formatted UTC Date object.
 export function getFormattedDate(date, time) {
     const dateObj = new Date(date);
     const year = dateObj.getUTCFullYear();
@@ -10,6 +11,7 @@ export function getFormattedDate(date, time) {
 }
 
 
+// Converts a Date object to a 12-hour format string.
 export function formatTo12Hour(date) {
     const timeString = date.toISOString().split("T")[1].substring(0, 5);
     let [hour, minute] = timeString.split(":").map(Number);

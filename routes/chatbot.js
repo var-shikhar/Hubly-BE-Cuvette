@@ -1,3 +1,13 @@
+/*
+|---------------------------------------------------------------------------
+| Chat and Settings Routes
+|---------------------------------------------------------------------------
+| Routes for chatbot settings, ticket management, and lead analytics.
+| Protected routes use `isAuth` middleware to verify authentication.
+| Includes CRUD operations for tickets, status updates, and assignees.
+*/
+
+
 import express from "express";
 import settingsController from '../controller/settings.js';
 import chatController from '../controller/chat.js';

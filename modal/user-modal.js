@@ -2,7 +2,15 @@ import mongoose from 'mongoose';
 import Lead from './lead-modal.js';
 import LeadConversation from './lead-conversation-modal.js';
 
-// User Schema
+/*
+|---------------------------------------------------------------------------
+| User Schema
+|---------------------------------------------------------------------------
+| Defines schema for storing user details: name, email, role, and password.
+| Includes pre-delete hook to reassign leads and conversations before deletion.
+| Only members are reassigned; admins cannot be deleted.
+*/
+
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,

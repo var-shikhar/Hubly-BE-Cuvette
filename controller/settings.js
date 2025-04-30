@@ -1,3 +1,21 @@
+/*
+|---------------------------------------------------------------------------
+| Chatbot Settings Management Controllers
+|---------------------------------------------------------------------------
+|
+| This file handles chatbot settings, including:
+|
+| - `loadDefaultSettings`: Initializes and saves default chatbot settings.
+| - `getBotSettings`: Retrieves current chatbot settings from the database.
+| - `putChatBotSettings`: Updates chatbot settings with provided data.
+|
+| The controllers interact with the `ChatbotSettings` model to fetch and 
+| save settings, ensuring that defaults are loaded if no settings exist. 
+| Error handling is done using the `CustomError` class with appropriate 
+| HTTP status codes.
+*/
+
+
 import { CustomError } from "../middleware/errorMiddleware.js";
 import ChatbotSettings from "../modal/chat-bot-modal.js"
 import RouteCode from "../util/httpStatus.js";

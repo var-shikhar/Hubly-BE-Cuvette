@@ -1,6 +1,12 @@
 import mongoose from 'mongoose';
 
-// Lead Conversation Schema
+/*
+|---------------------------------------------------------------------------
+| Lead Conversation Schema
+|---------------------------------------------------------------------------
+| Defines schema for storing lead conversations: lead ID, message, sender, and assignee.
+*/
+
 const leadConversationSchema = new mongoose.Schema({
     leadID: {
         type: mongoose.Schema.Types.ObjectId,

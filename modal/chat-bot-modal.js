@@ -1,6 +1,13 @@
+/*
+|---------------------------------------------------------------------------
+| Chatbot Settings Schema
+|---------------------------------------------------------------------------
+| Defines the schema for chatbot settings: UI colors, messages, form placeholders, 
+| welcome message, and missed chat timer.
+*/
+
 import mongoose from 'mongoose';
 
-// ChatBot Schema
 const chatbotSettingsSchema = new mongoose.Schema({
     headerColor: { type: String, default: '#33475B' },
     backgroundColor: { type: String, default: '#EEEEEE' },

@@ -1,7 +1,14 @@
 import mongoose from 'mongoose';
 import LeadConversation from './lead-conversation-modal.js';
 
-// Lead Schema
+/*
+|---------------------------------------------------------------------------
+| Lead Schema
+|---------------------------------------------------------------------------
+| Defines schema for storing lead information: ticket ID, user details, assignees, message status, and chat details.
+| Includes pre-delete hook to remove related conversations.
+*/
+
 const leadSchema = new mongoose.Schema({
     ticketID: { type: String, required: true },
     userName: { type: String },

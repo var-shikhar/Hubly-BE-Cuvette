@@ -1,27 +1,37 @@
 # HUBLY - Backend
 
-## Overview
+## 🚀 Overview
 
-The backend of HUBLY handles scheduling, user management, and event processing. It ensures seamless communication between the frontend and the database, while also maintaining error logging for better debugging.
+The backend of Hubly powers the core logic behind the chatbot interface, admin dashboard, team management, and analytics. Built with Node.js and Express, it facilitates secure user authentication, message logging, chatbot customization, and team-level operations — all backed by MongoDB for persistence.
 
-## Features
+## ✨ Features
 
-### Event & Scheduling Management
+### 💬 Chat & Message Management
 
-- Manages event creation, updating, and deletion.
-- Checks for availability conflicts before scheduling.
+- Stores and retrieves chat messages between end-users and admins.
+- Tracks missed chats and timestamps for response analytics.
+- Provides REST APIs for message history and user sessions.
 
-### User Management
+### 🧑‍💼 Admin & Team Management
 
-- Handles authentication and user profiles.
-- Stores and retrieves user availability settings.
+- Handles authentication for admins and their child (team) accounts.
+- Supports team-level management of chatbot settings and analytics.
 
-### Logging System
+### 🎛️ Chatbot Customization
 
-- Logs errors and stores them in a designated folder for debugging.
-- Ensures better tracking of backend issues.
+- Stores and manages customizable fields:
+  - Welcome messages
+  - Placeholder texts
+  - Submit button label
+  - Chat widget colors
 
-## Tech Stack
+### 📊 Analytics Tracking
+
+- Captures metrics for:
+  - Missed chats
+  - First response time
+
+## 🧱 Tech Stack
 
 ### Backend
 
@@ -31,16 +41,18 @@ The backend of HUBLY handles scheduling, user management, and event processing. 
 
 ### Additional Tools
 
-- **Winston** (for logging errors)
+- **Winston** - For error logging and operational logs.
+- **JWT** - For secure authentication and session management.
+- **bcrypt** - For secure password hashing.
 
-## Installation
+## 📦 Installation
 
 Follow these steps to set up the backend locally:
 
 ```sh
 # Clone the repository
-git clone https://github.com/var-shikhar/HUBLY-event-mangement-BE-Cuvette.git
-cd HUBLY-event-mangement-BE-Cuvette
+git clone https://github.com/var-shikhar/Hubly-BE-Cuvette.git
+cd Hubly-BE-Cuvette
 
 # Install dependencies
 npm install
@@ -52,23 +64,31 @@ cp .env.example .env
 npm run dev
 ```
 
-## Usage & Code Structure
+## 🧩 Usage & Code Structure
 
-### Modularized Codebase
+### 📁 Modular Architecture
 
-- The backend is structured for better maintainability and scalability.
-- Routes, controllers, and services are organized into separate modules.
+**Organized into:**
 
-### Logging System
+- /routes – API routes
+- /controllers – Business logic handlers
+- /models – Mongoose schemas
+- /middleware – Authentication, error handling, etc.
+- /utils – Helper functions and logging utilities
 
-- Uses `Winston` for error logging.
-- Logs are stored in a designated folder for debugging and monitoring.
+### 🔐 Authentication & Security
 
-### Authentication & Security
+- JWT-based access and refresh tokens for secure API access.
+- Passwords hashed with bcrypt and a predefined salt.
+- Refresh token management for extended sessions.
 
-- Uses JWT for secure authentication.
-- Implements refresh tokens for maintaining user sessions.
-- Passwords are securely hashed using bcrypt with a defined salt.
+### 📄 Logging System
+
+- Uses winston to log:
+  - Errors
+  - Unexpected behavior
+  - Critical application events
+- Logs are saved in a dedicated /logs folder for debugging and monitoring.
 
 ## Environment Variables
 
@@ -89,7 +109,7 @@ REFRESH_TOKEN_SECRET=your_refresh_token_secret
 RESET_PASSWORD_SECRET=your_reset_password_secret
 ```
 
-## Contact
+## 📬 Contact
 
 For more details, reach out to:
 
