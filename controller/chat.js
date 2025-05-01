@@ -43,9 +43,16 @@ const getTicketList = async (req, res, next) => {
     limit = parseInt(limit);
 
     try {
-        let query = {};
-        if (status !== 'All') query.status = status;
+        const foundUser = await getReqUser(req, res, next);
 
+        let query = {
+            $or: [
+                { currentAssignee: foundUser._id },
+                { assigneeList: foundUser._id },
+            ],
+        };
+
+        if (status !== 'All') query.status = status;
         const totalLeads = await Lead.countDocuments(query);
         const totalPages = Math.ceil(totalLeads / limit);
 
@@ -200,7 +207,7 @@ const putLeadAssignee = async (req, res, next) => {
     try {
         const foundUser = await getReqUser(req, res, next);
         const foundAdmin = await User.findOne({ userRole: 'Admin' });
-        if (!foundAdmin || foundUser._id !== foundAdmin._id) return next(new CustomError(!foundAdmin ? 'No Admin found, Contact support!' : 'Only admin can update the assignee!', RouteCode.UNAUTHORIZED.statusCode));
+        if (!foundAdmin || foundUser._id.toString() !== foundAdmin._id.toString()) return next(new CustomError(!foundAdmin ? 'No Admin found, Contact support!' : 'Only admin can update the assignee!', RouteCode.UNAUTHORIZED.statusCode));
 
         const foundLead = await Lead.findById(leadID);
         if (!foundLead) return next(new CustomError('Lead not found!', RouteCode.NOT_FOUND.statusCode));
